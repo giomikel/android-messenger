@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "242799692764",
+    "project_id": "messenger-84afe",
+    "storage_bucket": "messenger-84afe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:242799692764:android:a24a219d78c1bacb66dd19",
+        "android_client_info": {
+          "package_name": "ge.gmikeladze.messenger"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "242799692764-n6gkpcjv7e4g582brfpd1kfdvv6quicc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAEJuHKgs9VnJgxmgZRLIs2ebpf4olxBHQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "242799692764-n6gkpcjv7e4g582brfpd1kfdvv6quicc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
