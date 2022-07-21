@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/avatarImage"
+        android:layout_width="@dimen/avatar_imageview_dimen"
+        android:layout_height="@dimen/avatar_imageview_dimen"
+        android:background="@drawable/avatar_image_placeholder"
+        android:contentDescription="@null"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/nicknameText"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/login_edit_text_height"
+        android:layout_marginHorizontal="@dimen/login_edit_text_horizontal_margin"
+        android:layout_marginTop="@dimen/nickname_text_top_margin"
+        android:background="@drawable/login_text_frame"
+        android:hint="@string/nickname_text_hint"
+        android:importantForAutofill="no"
+        android:inputType="textPersonName"
+        android:paddingHorizontal="@dimen/login_text_horizontal_padding"
+        android:textAlignment="center"
+        android:textSize="@dimen/login_text_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/avatarImage" />
+
+    <EditText
+        android:id="@+id/passwordText"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/login_edit_text_height"
+        android:layout_marginHorizontal="@dimen/login_edit_text_horizontal_margin"
+        android:layout_marginTop="@dimen/auth_text_separation"
+        android:background="@drawable/login_text_frame"
+        android:hint="@string/password_text_hint"
+        android:importantForAutofill="no"
+        android:inputType="textPassword"
+        android:paddingHorizontal="@dimen/login_text_horizontal_padding"
+        android:textAlignment="center"
+        android:textSize="@dimen/login_text_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/nicknameText" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:context=".view.sign_up.SignUpActivity">
+
+            <include
+                android:id="@+id/signUpUserIdentification"
+                layout="@layout/user_identification"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/sign_up_avatar_imageview_top_margin"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/whatIDoText"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/login_edit_text_height"
+                android:layout_marginHorizontal="@dimen/login_edit_text_horizontal_margin"
+                android:layout_marginTop="@dimen/auth_text_separation"
+                android:background="@drawable/login_text_frame"
+                android:hint="@string/what_i_do_text"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:paddingHorizontal="@dimen/login_text_horizontal_padding"
+                android:textAlignment="center"
+                android:textSize="@dimen/login_text_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/signUpUserIdentification" />
+
+            <Button
+                android:id="@+id/signUpButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/sign_up_button_top_margin"
+                android:background="@drawable/authorization_button_frame"
+                android:paddingVertical="@dimen/button_vertical_padding"
+                android:text="@string/sign_up_button_text"
+                android:textAlignment="center"
+                android:textSize="@dimen/sign_up_text_size_larger"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/whatIDoText" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

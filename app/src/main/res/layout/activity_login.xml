@@ -1,94 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".view.login.LoginActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <ImageView
-        android:id="@+id/avatarImage"
-        android:layout_width="@dimen/avatar_imageview_dimen"
-        android:layout_height="@dimen/avatar_imageview_dimen"
-        android:layout_marginTop="@dimen/avatar_imageview_top_margin"
-        android:background="@drawable/avatar_image_placeholder"
-        android:contentDescription="@null"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <data>
 
-    <EditText
-        android:id="@+id/nicknameText"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/login_edit_text_height"
-        android:layout_marginTop="@dimen/nickname_text_top_margin"
-        android:background="@drawable/login_text_frame"
-        android:hint="@string/nickname_text_hint"
-        android:importantForAutofill="no"
-        android:inputType="textPersonName"
-        android:paddingHorizontal="@dimen/login_text_horizontal_padding"
-        android:textAlignment="center"
-        android:textSize="@dimen/login_text_size"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/avatarImage" />
+        <variable
+            name="model"
+            type="ge.gmikeladze.messenger.view_model.login.LoginViewModel" />
+    </data>
 
-    <EditText
-        android:id="@+id/passwordText"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/login_edit_text_height"
-        android:layout_marginTop="@dimen/password_text_top_margin"
-        android:background="@drawable/login_text_frame"
-        android:hint="@string/password_text_hint"
-        android:importantForAutofill="no"
-        android:inputType="textPassword"
-        android:paddingHorizontal="@dimen/login_text_horizontal_padding"
-        android:textAlignment="center"
-        android:textSize="@dimen/login_text_size"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/nicknameText" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:scrollbars="none">
 
-    <Button
-        android:id="@+id/signInButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingVertical="0dp"
-        android:layout_marginTop="@dimen/sign_in_button_top_margin"
-        android:background="@drawable/authorization_button_frame"
-        android:text="@string/sign_in_button_text"
-        android:textSize="@dimen/sign_in_text_size"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/passwordText" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:context=".view.login.LoginActivity">
 
-    <TextView
-        android:id="@+id/notRegisteredText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/not_registered_bottom_margin"
-        android:text="@string/not_registered_text"
-        android:textColor="@color/not_registered_text_color"
-        android:textSize="@dimen/not_registered_text_size"
-        app:layout_constraintBottom_toTopOf="@id/signUpButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+            <include
+                android:id="@+id/loginUserIdentification"
+                layout="@layout/user_identification"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/login_avatar_imageview_top_margin"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/signUpButton"
-        style="@style/Widget.Material3.Button.OutlinedButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/sign_up_button_bottom_margin"
-        android:text="@string/sign_up_button_text"
-        android:textColor="@color/not_registered_text_color"
-        android:textSize="@dimen/sign_up_text_size"
-        app:cornerRadius="@dimen/login_page_button_corner_radius"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:strokeColor="@color/not_registered_text_color" />
+            <Button
+                android:id="@+id/signInButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/sign_in_button_top_margin"
+                android:background="@drawable/authorization_button_frame"
+                android:paddingVertical="@dimen/button_vertical_padding"
+                android:text="@string/sign_in_button_text"
+                android:textAlignment="center"
+                android:textSize="@dimen/sign_in_text_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/loginUserIdentification" />
 
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@id/notRegisteredText"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/signInButton" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/notRegisteredText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/not_registered_bottom_margin"
+                android:text="@string/not_registered_text"
+                android:textColor="@color/not_registered_text_color"
+                android:textSize="@dimen/not_registered_text_size"
+                app:layout_constraintBottom_toTopOf="@id/signUpButton"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <Button
+                android:id="@+id/signUpButton"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/sign_up_button_bottom_margin"
+                android:text="@string/sign_up_button_text"
+                android:textColor="@color/not_registered_text_color"
+                android:textSize="@dimen/sign_up_text_size"
+                app:cornerRadius="@dimen/login_page_button_corner_radius"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:strokeColor="@color/not_registered_text_color" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

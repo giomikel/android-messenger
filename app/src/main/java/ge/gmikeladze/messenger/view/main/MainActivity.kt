@@ -17,4 +17,8 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent(this, LoginActivity::class.java)
         startActivity(intent)
     }
+
+    companion object {
+        const val PREFERENCE_NAME = "messengerAppPreferences"
+    }
 }
