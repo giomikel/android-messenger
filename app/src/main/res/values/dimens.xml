@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="avatar_imageview_dimen">200dp</dimen>
+    <dimen name="avatar_imageview_top_margin">90dp</dimen>
+
+    <dimen name="nickname_text_top_margin">35dp</dimen>
+    <dimen name="password_text_top_margin">15dp</dimen>
+    <dimen name="login_text_size">23sp</dimen>
+    <dimen name="login_edit_text_height">50dp</dimen>
+    <dimen name="login_text_horizontal_padding">60dp</dimen>
+    <dimen name="login_text_corner_radius">35dp</dimen>
+
+    <dimen name="sign_in_button_top_margin">20dp</dimen>
+    <dimen name="sign_in_text_size">23sp</dimen>
+
+    <dimen name="not_registered_text_size">15sp</dimen>
+    <dimen name="not_registered_bottom_margin">3dp</dimen>
+
+    <dimen name="sign_up_text_size">21sp</dimen>
+    <dimen name="sign_up_button_bottom_margin">10dp</dimen>
+    <dimen name="login_page_button_corner_radius">8dp</dimen>
+
+</resources>
