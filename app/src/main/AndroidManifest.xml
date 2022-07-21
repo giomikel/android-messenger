@@ -14,11 +14,14 @@
         android:theme="@style/Theme.Messenger"
         tools:targetApi="31">
         <activity
+            android:name=".view.homepage.HomepageActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.sign_up.SignUpActivity"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".view.login.LoginActivity"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".view.main.MainActivity"
             android:exported="true">

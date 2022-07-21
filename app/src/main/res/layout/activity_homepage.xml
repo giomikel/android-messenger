@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        tools:context=".view.homepage.HomepageActivity">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/app_bar_height">
+
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:id="@+id/collapsingToolbar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/ic_background"
+                app:contentScrim="@color/collapsed_bar_color"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:layout_gravity="bottom"
+                    app:layout_collapseMode="pin">
+
+                    <EditText
+                        android:id="@+id/searchBar"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/search_bar_height"
+                        android:layout_marginHorizontal="@dimen/search_bar_margin"
+                        android:layout_marginBottom="@dimen/search_bar_margin"
+                        android:background="@drawable/search_bar_frame"
+                        android:backgroundTint="@color/search_bar_tint"
+                        android:drawableStart="@drawable/ic_search"
+                        android:hint="@string/search_bar_text"
+                        android:importantForAutofill="no"
+                        android:inputType="textPersonName"
+                        android:paddingHorizontal="@dimen/search_bar_padding" />
+
+                </androidx.appcompat.widget.Toolbar>
+
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/contactRV"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+        </androidx.core.widget.NestedScrollView>
+
+        <com.google.android.material.bottomappbar.BottomAppBar
+            android:id="@+id/bottomBar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_gravity="bottom"
+            app:contentInsetStart="@dimen/bottom_bar_inset"
+            app:fabAlignmentMode="center"
+            app:hideOnScroll="true">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center">
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1" />
+
+                <ImageButton
+                    android:layout_width="@dimen/bottom_bar_icon_dimen"
+                    android:layout_height="@dimen/bottom_bar_icon_dimen"
+                    android:layout_gravity="center"
+                    android:background="@drawable/ic_home"
+                    android:backgroundTint="@color/selected_bottom_icon_background_tint"
+                    android:contentDescription="@null"
+                    android:scaleType="center" />
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="2.5" />
+
+                <ImageButton
+                    android:layout_width="@dimen/bottom_bar_icon_dimen"
+                    android:layout_height="@dimen/bottom_bar_icon_dimen"
+                    android:layout_gravity="center"
+                    android:background="@drawable/ic_settings"
+                    android:backgroundTint="@color/unselected_bottom_icon_background_tint"
+                    android:contentDescription="@null" />
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </com.google.android.material.bottomappbar.BottomAppBar>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/add_button_tint"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_add"
+            app:layout_anchor="@id/bottomBar"
+            app:tint="@color/white" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

@@ -11,5 +11,10 @@
     <color name="authorization_button_color">#5478f0</color>
     <color name="login_text_background_color">#f3f7fe</color>
     <color name="not_registered_text_color">#404041</color>
+    <color name="collapsed_bar_color">#5478f0</color>
+    <color name="search_bar_tint">#d1ddfd</color>
+    <color name="add_button_tint">#5478f0</color>
+    <color name="selected_bottom_icon_background_tint">#5478f0</color>
+    <color name="unselected_bottom_icon_background_tint">#666666</color>
 
 </resources>

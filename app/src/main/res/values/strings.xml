@@ -7,4 +7,5 @@
     <string name="not_registered_text">Not registered?</string>
     <string name="sign_up_button_text">SIGN UP</string>
     <string name="what_i_do_text">What I do</string>
+    <string name="search_bar_text">Search</string>
 </resources>
