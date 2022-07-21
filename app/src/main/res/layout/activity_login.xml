@@ -31,15 +31,17 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/signInButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/sign_in_button_top_margin"
                 android:background="@drawable/authorization_button_frame"
+                android:paddingHorizontal="@dimen/button_horizontal_padding"
                 android:paddingVertical="@dimen/button_vertical_padding"
                 android:text="@string/sign_in_button_text"
                 android:textAlignment="center"
+                android:textColor="@color/white"
                 android:textSize="@dimen/sign_in_text_size"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

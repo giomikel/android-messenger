@@ -10,7 +10,7 @@
         <entry key="app/src/main/res/drawable/login_text_frame.xml" value="0.2665" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2625" />
-        <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.33" />
         <entry key="app/src/main/res/layout/user_identification.xml" value="0.26145833333333335" />
       </map>
     </option>

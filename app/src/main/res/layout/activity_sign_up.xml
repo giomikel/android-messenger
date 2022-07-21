@@ -41,15 +41,17 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/signUpUserIdentification" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/signUpButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="@dimen/sign_up_button_top_margin"
+                android:layout_marginVertical="@dimen/sign_up_button_vertical_margin"
                 android:background="@drawable/authorization_button_frame"
+                android:paddingHorizontal="@dimen/button_horizontal_padding"
                 android:paddingVertical="@dimen/button_vertical_padding"
                 android:text="@string/sign_up_button_text"
                 android:textAlignment="center"
+                android:textColor="@color/white"
                 android:textSize="@dimen/sign_up_text_size_larger"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

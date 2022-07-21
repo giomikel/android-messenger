@@ -22,7 +22,8 @@
     <dimen name="sign_up_avatar_imageview_top_margin">100dp</dimen>
     <dimen name="login_edit_text_horizontal_margin">40dp</dimen>
     <dimen name="button_vertical_padding">0dp</dimen>
-    <dimen name="sign_up_button_top_margin">20dp</dimen>
+    <dimen name="sign_up_button_vertical_margin">20dp</dimen>
     <dimen name="sign_up_text_size_larger">23sp</dimen>
+    <dimen name="button_horizontal_padding">15dp</dimen>
 
 </resources>
