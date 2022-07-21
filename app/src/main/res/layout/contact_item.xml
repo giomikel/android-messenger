@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/contact_item_height">
+
+    <ImageView
+        android:id="@+id/avatarImage"
+        android:layout_width="@dimen/contact_item_avatar_dimen"
+        android:layout_height="@dimen/contact_item_avatar_dimen"
+        android:layout_marginStart="@dimen/contact_item_avatar_left_margin"
+        android:layout_marginTop="@dimen/contact_item_avatar_top_margin"
+        android:contentDescription="@null"
+        android:src="@drawable/avatar_image_placeholder"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/nameText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/contact_item_name_left_margin"
+        android:layout_marginTop="@dimen/contact_item_name_top_margin"
+        android:textColor="@color/contact_name_color"
+        android:textSize="@dimen/contact_item_bigger_text"
+        app:layout_constraintStart_toEndOf="@id/avatarImage"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/test_name" />
+
+    <TextView
+        android:id="@+id/timeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/contact_item_time_top_margin"
+        android:layout_marginEnd="@dimen/contact_item_time_right_margin"
+        android:textColor="@color/contact_item_lighter_text"
+        android:textSize="@dimen/contact_item_smaller_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/test_time" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/contact_item_last_message_top_margin"
+        android:ellipsize="end"
+        android:maxLines="@integer/contact_item_message_max_lines"
+        android:textColor="@color/contact_item_lighter_text"
+        android:textSize="@dimen/contact_item_smaller_text"
+        app:layout_constraintEnd_toStartOf="@id/timeText"
+        app:layout_constraintStart_toStartOf="@id/nameText"
+        app:layout_constraintTop_toBottomOf="@id/nameText"
+        tools:text="@string/test_message" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

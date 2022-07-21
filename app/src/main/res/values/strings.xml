@@ -8,4 +8,7 @@
     <string name="sign_up_button_text">SIGN UP</string>
     <string name="what_i_do_text">What I do</string>
     <string name="search_bar_text">Search</string>
+    <string name="test_name">Name Surname</string>
+    <string name="test_time">10 hour</string>
+    <string name="test_message">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco</string>
 </resources>
