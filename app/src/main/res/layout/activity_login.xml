@@ -7,7 +7,7 @@
 
         <variable
             name="model"
-            type="ge.gmikeladze.messenger.view_model.login.LoginViewModel" />
+            type="ge.gmikeladze.messenger.view_model.LoginViewModel" />
     </data>
 
     <ScrollView
@@ -19,7 +19,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:context=".view.login.LoginActivity">
+            tools:context=".view.LoginActivity">
 
             <include
                 android:id="@+id/loginUserIdentification"
@@ -37,6 +37,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/sign_in_button_top_margin"
                 android:background="@drawable/authorization_button_frame"
+                android:clickable="@{model.isSignInClickable}"
                 android:paddingHorizontal="@dimen/button_horizontal_padding"
                 android:paddingVertical="@dimen/button_vertical_padding"
                 android:text="@string/sign_in_button_text"
@@ -73,6 +74,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/sign_up_button_bottom_margin"
+                android:clickable="@{model.isSignUpClickable}"
                 android:text="@string/sign_up_button_text"
                 android:textColor="@color/not_registered_text_color"
                 android:textSize="@dimen/sign_up_text_size"
@@ -81,6 +83,16 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:strokeColor="@color/not_registered_text_color" />
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="@{model.isProgressBarVisible}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

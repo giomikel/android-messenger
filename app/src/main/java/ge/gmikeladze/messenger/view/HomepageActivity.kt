@@ -1,12 +1,14 @@
-package ge.gmikeladze.messenger.view.sign_up
+package ge.gmikeladze.messenger.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import ge.gmikeladze.messenger.R
 
-class SignUpActivity : AppCompatActivity() {
+class HomepageActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_sign_up)
+        setContentView(R.layout.activity_homepage)
     }
+
+    override fun onBackPressed() {}
 }
