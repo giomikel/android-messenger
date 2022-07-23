@@ -13,27 +13,29 @@ import ge.gmikeladze.messenger.view.MainActivity.Companion.MAIL
 class SignUpViewModel : ViewModel() {
     var isSignUpClickable: MutableLiveData<Boolean> = MutableLiveData()
     var isProgressBarVisible: MutableLiveData<Int> = MutableLiveData()
+    var status: MutableLiveData<String> = MutableLiveData()
 
     init {
         isSignUpClickable.value = true
         isProgressBarVisible.value = View.INVISIBLE
+        status.value = ""
     }
 
-    fun signUp(nickname: String, password: String, profession: String): Boolean {
+    fun signUp(nickname: String, password: String, profession: String) {
         changeViewWhileLoading()
         val auth = Firebase.auth
         val database = Firebase.database
         val mail = nickname + MAIL
-        var success = false
         auth.createUserWithEmailAndPassword(mail, password).addOnCompleteListener {
             if (it.isSuccessful) {
-                success = true
                 database.getReference(DATABASE_USERS).child(nickname)
                     .setValue(User(nickname, profession))
+                status.value = SIGN_UP_SUCCESSFUL_MESSAGE
+            } else {
+                status.value = it.exception.toString()
             }
         }
         changeViewAfterLoading()
-        return success
     }
 
     private fun changeViewWhileLoading() {

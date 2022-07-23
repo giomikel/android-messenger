@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import ge.gmikeladze.messenger.databinding.ActivityLoginBinding
 import ge.gmikeladze.messenger.view_model.LoginViewModel
+import ge.gmikeladze.messenger.view_model.LoginViewModel.Companion.SIGN_IN_SUCCESSFUL_MESSAGE
 import ge.gmikeladze.messenger.view_model_factory.LoginViewModelFactory
 
 class LoginActivity : AppCompatActivity() {
@@ -48,11 +49,13 @@ class LoginActivity : AppCompatActivity() {
         val nickname = binding.loginUserIdentification.nicknameText.text.toString()
         val password = binding.loginUserIdentification.passwordText.text.toString()
         if (validate(nickname, password)) {
-            val success = viewModel.signIn(nickname, password)
-            if (success) {
-                onSuccessfulSignIn()
-            } else {
-//                onFailedSignIn("fail")
+            viewModel.signIn(nickname, password)
+            viewModel.status.observe(this) {
+                if (it == SIGN_IN_SUCCESSFUL_MESSAGE) {
+                    onSuccessfulSignIn()
+                } else if (it != "") {
+                    onFailedSignIn(it)
+                }
             }
         }
     }
@@ -74,7 +77,7 @@ class LoginActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    fun onFailedSignIn(message: String) {
+    private fun onFailedSignIn(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
         binding.loginUserIdentification.passwordText.setText("")
     }

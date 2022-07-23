@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import ge.gmikeladze.messenger.databinding.ActivitySignUpBinding
 import ge.gmikeladze.messenger.view_model.LoginViewModel
+import ge.gmikeladze.messenger.view_model.LoginViewModel.Companion.SIGN_IN_SUCCESSFUL_MESSAGE
 import ge.gmikeladze.messenger.view_model.SignUpViewModel
 import ge.gmikeladze.messenger.view_model_factory.SignUpViewModelFactory
 
@@ -42,11 +43,13 @@ class SignUpActivity : AppCompatActivity() {
         val password = binding.signUpUserIdentification.passwordText.text.toString()
         val profession = binding.whatIDoText.text.toString()
         if (validate(nickname, password)) {
-            val success = viewModel.signUp(nickname, password, profession)
-            if (success) {
-                onSuccessfulSignUp()
-            } else {
-//                onFailedSignUp("fail")
+            viewModel.signUp(nickname, password, profession)
+            viewModel.status.observe(this) {
+                if (it == SIGN_IN_SUCCESSFUL_MESSAGE) {
+                    onSuccessfulSignUp()
+                } else if (it != "") {
+                    onFailedSignUp(it)
+                }
             }
         }
     }
@@ -66,10 +69,9 @@ class SignUpActivity : AppCompatActivity() {
     private fun onSuccessfulSignUp() {
         val intent = Intent(this, HomepageActivity::class.java)
         startActivity(intent)
-        finish()
     }
 
-    fun onFailedSignUp(message: String) {
+    private fun onFailedSignUp(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
         binding.signUpUserIdentification.passwordText.setText("")
     }
