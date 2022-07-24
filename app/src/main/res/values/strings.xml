@@ -11,4 +11,8 @@
     <string name="test_name">Name Surname</string>
     <string name="test_time">10 hour</string>
     <string name="test_message">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco</string>
+    <string name="profile_name_hint">Your Nickname</string>
+    <string name="profession_text">Profession</string>
+    <string name="update_button_text">Update</string>
+    <string name="profile_sign_out_button_text">SIGN OUT</string>
 </resources>

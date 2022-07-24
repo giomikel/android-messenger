@@ -14,6 +14,7 @@ import ge.gmikeladze.messenger.view_model_factory.SignUpViewModelFactory
 class SignUpActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySignUpBinding
+    private var toastMessage: Toast? = null
 
     private val viewModel: SignUpViewModel by lazy {
         ViewModelProvider(
@@ -67,12 +68,15 @@ class SignUpActivity : AppCompatActivity() {
     }
 
     private fun onSuccessfulSignUp() {
+        toastMessage?.cancel()
         val intent = Intent(this, HomepageActivity::class.java)
         startActivity(intent)
     }
 
     private fun onFailedSignUp(message: String) {
+        toastMessage?.cancel()
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+        toastMessage?.show()
         binding.signUpUserIdentification.passwordText.setText("")
     }
 }

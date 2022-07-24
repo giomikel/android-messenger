@@ -1,6 +1,5 @@
 package ge.gmikeladze.messenger.view_model
 
-import android.view.View
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.auth.ktx.auth
@@ -12,12 +11,12 @@ import ge.gmikeladze.messenger.view.MainActivity.Companion.MAIL
 
 class SignUpViewModel : ViewModel() {
     var isSignUpClickable: MutableLiveData<Boolean> = MutableLiveData()
-    var isProgressBarVisible: MutableLiveData<Int> = MutableLiveData()
+    var isProgressBarVisible: MutableLiveData<Boolean> = MutableLiveData()
     var status: MutableLiveData<String> = MutableLiveData()
 
     init {
         isSignUpClickable.value = true
-        isProgressBarVisible.value = View.INVISIBLE
+        isProgressBarVisible.value = false
         status.value = ""
     }
 
@@ -30,9 +29,9 @@ class SignUpViewModel : ViewModel() {
             if (it.isSuccessful) {
                 database.getReference(DATABASE_USERS).child(nickname)
                     .setValue(User(nickname, profession))
-                status.value = SIGN_UP_SUCCESSFUL_MESSAGE
+                status.postValue(SIGN_UP_SUCCESSFUL_MESSAGE)
             } else {
-                status.value = it.exception.toString()
+                status.postValue(it.exception.toString())
             }
         }
         changeViewAfterLoading()
@@ -40,12 +39,12 @@ class SignUpViewModel : ViewModel() {
 
     private fun changeViewWhileLoading() {
         isSignUpClickable.value = false
-        isProgressBarVisible.value = View.VISIBLE
+        isProgressBarVisible.value = true
     }
 
     private fun changeViewAfterLoading() {
         isSignUpClickable.value = true
-        isProgressBarVisible.value = View.INVISIBLE
+        isProgressBarVisible.value = false
     }
 
     companion object {

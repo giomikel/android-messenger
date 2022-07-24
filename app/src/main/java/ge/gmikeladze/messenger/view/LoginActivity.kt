@@ -13,6 +13,7 @@ import ge.gmikeladze.messenger.view_model_factory.LoginViewModelFactory
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
+    private var toastMessage: Toast? = null
 
     private val viewModel: LoginViewModel by lazy {
         ViewModelProvider(
@@ -73,12 +74,15 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun onSuccessfulSignIn() {
+        toastMessage?.cancel()
         val intent = Intent(this, HomepageActivity::class.java)
         startActivity(intent)
     }
 
     private fun onFailedSignIn(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+        toastMessage?.cancel()
+        toastMessage = Toast.makeText(this, message, Toast.LENGTH_SHORT)
+        toastMessage?.show()
         binding.loginUserIdentification.passwordText.setText("")
     }
 }
