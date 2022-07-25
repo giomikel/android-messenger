@@ -49,5 +49,6 @@ class SignUpViewModel : ViewModel() {
 
     companion object {
         const val SIGN_UP_SUCCESSFUL_MESSAGE = "SUCCESS"
+        const val EMPTY_PROFESSION_ERROR = "Profession field is empty"
     }
 }

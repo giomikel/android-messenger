@@ -15,10 +15,10 @@
         <entry key="app/src/main/res/drawable/ic_settings.xml" value="0.2675" />
         <entry key="app/src/main/res/drawable/login_text_frame.xml" value="0.2665" />
         <entry key="app/src/main/res/drawable/search_bar_frame.xml" value="0.1205" />
-        <entry key="app/src/main/res/layout/activity_homepage.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_homepage.xml" value="0.2037037037037037" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2625" />
-        <entry key="app/src/main/res/layout/activity_profile.xml" value="0.2625" />
+        <entry key="app/src/main/res/layout/activity_profile.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.33" />
         <entry key="app/src/main/res/layout/contact_item.xml" value="0.5" />
         <entry key="app/src/main/res/layout/user_identification.xml" value="0.26145833333333335" />

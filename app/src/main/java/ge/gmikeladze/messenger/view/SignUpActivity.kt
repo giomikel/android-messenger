@@ -43,7 +43,7 @@ class SignUpActivity : AppCompatActivity() {
         val nickname = binding.signUpUserIdentification.nicknameText.text.toString()
         val password = binding.signUpUserIdentification.passwordText.text.toString()
         val profession = binding.whatIDoText.text.toString()
-        if (validate(nickname, password)) {
+        if (validate(nickname, password, profession)) {
             viewModel.signUp(nickname, password, profession)
             viewModel.status.observe(this) {
                 if (it == SIGN_IN_SUCCESSFUL_MESSAGE) {
@@ -55,13 +55,17 @@ class SignUpActivity : AppCompatActivity() {
         }
     }
 
-    private fun validate(nickname: String, password: String): Boolean {
+    private fun validate(nickname: String, password: String, profession: String): Boolean {
         if (nickname.isEmpty()) {
             Toast.makeText(this, LoginViewModel.EMPTY_NICKNAME_ERROR, Toast.LENGTH_SHORT).show()
             return false
         }
         if (password.isEmpty()) {
             Toast.makeText(this, LoginViewModel.EMPTY_PASSWORD_ERROR, Toast.LENGTH_SHORT).show()
+            return false
+        }
+        if (profession.isEmpty()) {
+            Toast.makeText(this, SignUpViewModel.EMPTY_PROFESSION_ERROR, Toast.LENGTH_SHORT).show()
             return false
         }
         return true
@@ -71,6 +75,7 @@ class SignUpActivity : AppCompatActivity() {
         toastMessage?.cancel()
         val intent = Intent(this, HomepageActivity::class.java)
         startActivity(intent)
+        finish()
     }
 
     private fun onFailedSignUp(message: String) {

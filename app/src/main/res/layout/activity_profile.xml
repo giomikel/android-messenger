@@ -3,6 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="model"
+            type="ge.gmikeladze.messenger.view_model.ProfileViewModel" />
+    </data>
+
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -19,8 +28,9 @@
                 android:layout_width="@dimen/profile_avatar_dimen"
                 android:layout_height="@dimen/profile_avatar_dimen"
                 android:layout_marginTop="@dimen/profile_avatar_top_margin"
-                android:background="@drawable/avatar_image_placeholder"
                 android:contentDescription="@null"
+                android:scaleType="centerCrop"
+                android:src="@drawable/avatar_image_placeholder"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -36,8 +46,9 @@
                 android:importantForAutofill="no"
                 android:inputType="textPersonName"
                 android:paddingHorizontal="@dimen/profile_text_horizontal_padding"
-                android:text="@string/test_name"
+                android:text="@{model.nickname}"
                 android:textAlignment="center"
+                android:textColor="@color/profile_text_color"
                 android:textSize="@dimen/profile_text_size"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -54,8 +65,9 @@
                 android:importantForAutofill="no"
                 android:inputType="text"
                 android:paddingHorizontal="@dimen/profile_text_horizontal_padding"
-                android:text="@string/profession_text"
+                android:text="@{model.profession}"
                 android:textAlignment="center"
+                android:textColor="@color/profile_text_color"
                 android:textSize="@dimen/profile_text_size"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -67,6 +79,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/profile_update_button_top_margin"
                 android:background="@drawable/authorization_button_frame"
+                android:clickable="@{model.isUpdateClickable()}"
                 android:paddingHorizontal="@dimen/profile_update_button_horizontal_padding"
                 android:text="@string/update_button_text"
                 android:textAllCaps="false"
@@ -82,10 +95,11 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/profile_sign_out_button_top_margin"
+                android:clickable="@{model.isSignOutClickable()}"
                 android:paddingVertical="@dimen/profile_sign_out_button_vertical_padding"
                 android:text="@string/profile_sign_out_button_text"
                 android:textAlignment="center"
-                android:textColor="@color/black"
+                android:textColor="@color/profile_text_color"
                 android:textSize="@dimen/profile_sign_out_button_text_size"
                 app:cornerRadius="@dimen/profile_sign_out_button_corner_radius"
                 app:layout_constraintEnd_toEndOf="@id/updateButton"
@@ -109,40 +123,33 @@
                 android:layout_height="match_parent"
                 android:gravity="center">
 
-                <Space
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_gravity="center"
-                    android:layout_weight="1" />
-
                 <ImageButton
-                    android:layout_width="@dimen/bottom_bar_icon_dimen"
-                    android:layout_height="@dimen/bottom_bar_icon_dimen"
+                    android:id="@+id/homeButton"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:background="@drawable/ic_home"
-                    android:backgroundTint="@color/unselected_bottom_icon_background_tint"
+                    android:layout_weight="1"
+                    android:background="@null"
                     android:contentDescription="@null"
-                    android:scaleType="center" />
+                    android:scaleType="center"
+                    android:src="@drawable/ic_home"
+                    app:tint="@color/unselected_bottom_icon_background_tint" />
 
                 <Space
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_gravity="center"
-                    android:layout_weight="2.5" />
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.3" />
 
                 <ImageButton
-                    android:layout_width="@dimen/bottom_bar_icon_dimen"
-                    android:layout_height="@dimen/bottom_bar_icon_dimen"
-                    android:layout_gravity="center"
-                    android:background="@drawable/ic_settings"
-                    android:backgroundTint="@color/selected_bottom_icon_background_tint"
-                    android:contentDescription="@null" />
-
-                <Space
+                    android:id="@+id/profileButton"
                     android:layout_width="0dp"
-                    android:layout_height="0dp"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:contentDescription="@null"
+                    android:src="@drawable/ic_settings"
+                    app:tint="@color/selected_bottom_icon_background_tint" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
         </com.google.android.material.bottomappbar.BottomAppBar>
@@ -156,6 +163,17 @@
             android:src="@drawable/ic_add"
             app:layout_anchor="@id/bottomBar"
             app:tint="@color/white" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="@{model.isProgressBarVisible ? View.VISIBLE : View.INVISIBLE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

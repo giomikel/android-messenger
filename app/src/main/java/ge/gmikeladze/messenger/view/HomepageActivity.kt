@@ -4,6 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import ge.gmikeladze.messenger.databinding.ActivityHomepageBinding
 import ge.gmikeladze.messenger.view_model.HomepageViewModel
 import ge.gmikeladze.messenger.view_model_factory.HomepageViewModelFactory
@@ -40,5 +42,13 @@ class HomepageActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    override fun onBackPressed() {}
+    override fun onResume() {
+        super.onResume()
+        val auth = Firebase.auth
+        if (auth.currentUser == null) {
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+    }
 }

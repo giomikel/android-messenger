@@ -77,6 +77,7 @@ class LoginActivity : AppCompatActivity() {
         toastMessage?.cancel()
         val intent = Intent(this, HomepageActivity::class.java)
         startActivity(intent)
+        finish()
     }
 
     private fun onFailedSignIn(message: String) {

@@ -28,6 +28,7 @@ class MainActivity : AppCompatActivity() {
             if (viewModel.isUserLogged()) HomepageActivity::class.java else LoginActivity::class.java
         val intent = Intent(this, activityClass)
         startActivity(intent)
+        finish()
     }
 
     companion object {
