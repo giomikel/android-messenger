@@ -45,6 +45,7 @@
                         android:background="@drawable/search_bar_frame"
                         android:backgroundTint="@color/search_bar_tint"
                         android:drawableStart="@drawable/ic_search"
+                        android:drawablePadding="@dimen/search_bar_drawable_padding"
                         android:hint="@string/search_bar_text"
                         android:importantForAutofill="no"
                         android:inputType="textPersonName"

@@ -7,8 +7,8 @@
 
     <ImageView
         android:id="@+id/avatarImage"
-        android:layout_width="@dimen/contact_item_avatar_dimen"
-        android:layout_height="@dimen/contact_item_avatar_dimen"
+        android:layout_width="@dimen/small_avatar_icon_dimen"
+        android:layout_height="@dimen/small_avatar_icon_dimen"
         android:layout_marginStart="@dimen/contact_item_avatar_left_margin"
         android:layout_marginTop="@dimen/contact_item_avatar_top_margin"
         android:contentDescription="@null"

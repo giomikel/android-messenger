@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="100dp">
+
+    <ImageView
+        android:id="@+id/searchItemAvatar"
+        android:layout_width="@dimen/small_avatar_icon_dimen"
+        android:layout_height="@dimen/small_avatar_icon_dimen"
+        android:layout_marginStart="@dimen/search_item_avatar_start_margin"
+        android:layout_marginTop="@dimen/search_item_avatar_top_margin"
+        android:contentDescription="@null"
+        android:src="@drawable/avatar_image_placeholder"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/searchItemNickname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/search_item_nickname_start_margin"
+        android:layout_marginTop="@dimen/search_item_nickname_top_margin"
+        android:textColor="@color/search_item_nickname_color"
+        android:textSize="@dimen/search_item_nickname_text_size"
+        app:layout_constraintStart_toEndOf="@id/searchItemAvatar"
+        app:layout_constraintTop_toTopOf="@id/searchItemAvatar"
+        tools:text="@string/test_name" />
+
+    <TextView
+        android:id="@+id/searchItemProfession"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/searchItemNickname"
+        app:layout_constraintTop_toBottomOf="@id/searchItemNickname"
+        tools:text="@string/profession_text" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

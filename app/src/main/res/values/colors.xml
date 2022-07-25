@@ -19,5 +19,6 @@
     <color name="contact_name_color">#323a53</color>
     <color name="contact_item_lighter_text">#a9aec0</color>
     <color name="profile_text_color">#3E3F41</color>
+    <color name="search_item_nickname_color">#272f47</color>
 
 </resources>
