@@ -20,5 +20,11 @@
     <color name="contact_item_lighter_text">#a9aec0</color>
     <color name="profile_text_color">#3E3F41</color>
     <color name="search_item_nickname_color">#272f47</color>
+    <color name="chat_profession_text_color">#bdcbfa</color>
+    <color name="message_box_tint">#f4f5f5</color>
+    <color name="time_text_color">#acb1bf</color>
+    <color name="outgoing_message_background_tint">#5579f0</color>
+    <color name="incoming_message_background_tint">#f4f6ff</color>
+    <color name="incoming_message_text_color">#5d698b</color>
 
 </resources>
