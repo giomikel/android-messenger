@@ -35,10 +35,18 @@ class HomepageActivity : AppCompatActivity() {
         binding.profileButton.setOnClickListener {
             onProfileButtonClicked()
         }
+        binding.fab.setOnClickListener {
+            onFabClicked()
+        }
     }
 
     private fun onProfileButtonClicked() {
         val intent = Intent(this, ProfileActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun onFabClicked() {
+        val intent = Intent(this, SearchActivity::class.java)
         startActivity(intent)
     }
 

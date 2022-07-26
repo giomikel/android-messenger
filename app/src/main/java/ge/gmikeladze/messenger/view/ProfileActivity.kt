@@ -9,6 +9,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.StorageException
 import com.google.firebase.storage.ktx.storage
@@ -33,10 +34,20 @@ class ProfileActivity : AppCompatActivity() {
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
                 val imageUri = result.data?.data
+                val username =
+                    Firebase.auth.currentUser!!.email!!.substringBefore(MainActivity.MAIL)
                 Glide.with(this).load(imageUri).circleCrop().into(binding.avatarImage)
                 if (result.data != null) {
                     Firebase.storage.getReference("avatars/${Firebase.auth.currentUser!!.email}")
-                        .putFile(result.data!!.data!!)
+                        .putFile(result.data!!.data!!).addOnCompleteListener { uploadTask ->
+                            if (uploadTask.isSuccessful) {
+                                Firebase.storage.getReference("avatars/${Firebase.auth.currentUser!!.email}")
+                                    .downloadUrl.addOnSuccessListener { uri ->
+                                        Firebase.database.getReference("users").child(username)
+                                            .child("avatarUrl").setValue(uri.toString())
+                                    }
+                            }
+                        }
                 }
             }
         }
@@ -64,6 +75,9 @@ class ProfileActivity : AppCompatActivity() {
         }
         binding.avatarImage.setOnClickListener {
             onAvatarClicked()
+        }
+        binding.fab.setOnClickListener {
+            onFabClicked()
         }
     }
 
@@ -120,6 +134,12 @@ class ProfileActivity : AppCompatActivity() {
             type = "image/*"
         }
         resultLauncher.launch(intent)
+    }
+
+    private fun onFabClicked() {
+        val intent = Intent(this, SearchActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 
     companion object {
