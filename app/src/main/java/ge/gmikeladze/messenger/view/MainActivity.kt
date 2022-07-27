@@ -35,5 +35,7 @@ class MainActivity : AppCompatActivity() {
         const val PREFERENCE_NAME = "messengerAppPreferences"
         const val MAIL = "@test.com"
         const val DATABASE_USERS = "users"
+        const val DATABASE_CHATS = "chats"
+        const val DATABASE_CONVERSATIONS = "conversations"
     }
 }

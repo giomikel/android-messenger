@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Messenger</string>
 
-    <string name="nickname_text_hint">Enter your nickname</string>
+    <string name="nickname_text_hint">Enter your username</string>
     <string name="password_text_hint">Enter your password</string>
     <string name="sign_in_button_text">SIGN IN</string>
     <string name="not_registered_text">Not registered?</string>

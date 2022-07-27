@@ -72,7 +72,7 @@
             app:fabAlignmentMode="center"
             app:hideOnScroll="true">
 
-            <androidx.appcompat.widget.LinearLayoutCompat
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center">
@@ -105,7 +105,7 @@
                     android:src="@drawable/ic_settings"
                     app:tint="@color/unselected_bottom_icon_background_tint" />
 
-            </androidx.appcompat.widget.LinearLayoutCompat>
+            </LinearLayout>
         </com.google.android.material.bottomappbar.BottomAppBar>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton

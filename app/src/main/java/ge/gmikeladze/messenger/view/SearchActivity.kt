@@ -1,21 +1,21 @@
 package ge.gmikeladze.messenger.view
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.Toast
-import androidx.core.widget.addTextChangedListener
-import androidx.core.widget.doAfterTextChanged
-import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.ViewModelProvider
 import ge.gmikeladze.messenger.adapter.SearchItemAdapter
 import ge.gmikeladze.messenger.adapter.SearchItemClickListener
 import ge.gmikeladze.messenger.databinding.ActivitySearchBinding
 import ge.gmikeladze.messenger.model.User
 import ge.gmikeladze.messenger.view_model.SearchViewModel
+import ge.gmikeladze.messenger.view_model.SearchViewModel.Companion.CHAT_FAIL
+import ge.gmikeladze.messenger.view_model.SearchViewModel.Companion.CHAT_SUCCESS
+import ge.gmikeladze.messenger.view_model.SearchViewModel.Companion.SEPARATOR
 import ge.gmikeladze.messenger.view_model_factory.SearchViewModelFactory
-import kotlinx.coroutines.delay
 import java.util.*
 
 class SearchActivity : AppCompatActivity() {
@@ -31,7 +31,24 @@ class SearchActivity : AppCompatActivity() {
 
     private val searchItemClickListener = object : SearchItemClickListener {
         override fun onItemClicked(user: User) {
-            TODO("Not yet implemented")
+            viewModel.onSearchUserClicked(user)
+            viewModel.clickStatus.observe(this@SearchActivity) {
+                if (it.startsWith(CHAT_SUCCESS)) {
+                    val data = it.substringAfter(CHAT_SUCCESS)
+                    val intent = Intent(this@SearchActivity, ChatActivity::class.java).apply {
+                        putExtra(SECOND_USER_EXTRA, data.substringBefore(SEPARATOR))
+                        putExtra(CHAT_ID_EXTRA, data.substringAfter(SEPARATOR))
+                    }
+                    startActivity(intent)
+                    finish()
+                } else if (it.startsWith(CHAT_FAIL)) {
+                    Toast.makeText(
+                        this@SearchActivity,
+                        it.substringAfter(CHAT_FAIL),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
         }
 
     }
@@ -84,7 +101,7 @@ class SearchActivity : AppCompatActivity() {
                     viewModel.searchItems.observe(this@SearchActivity) {
                         adapter.updateSearchItems(it)
                     }
-                    viewModel.status.observe(this@SearchActivity) {
+                    viewModel.searchStatus.observe(this@SearchActivity) {
                         Toast.makeText(this@SearchActivity, it.toString(), Toast.LENGTH_SHORT)
                             .show()
                     }
@@ -92,5 +109,10 @@ class SearchActivity : AppCompatActivity() {
             }
 
         })
+    }
+
+    companion object {
+        const val SECOND_USER_EXTRA = "second"
+        const val CHAT_ID_EXTRA = "id"
     }
 }

@@ -77,11 +77,20 @@
     <dimen name="message_box_horizontal_padding">30dp</dimen>
     <dimen name="search_item_height">100dp</dimen>
     <dimen name="time_text_end_margin">10dp</dimen>
-    <dimen name="message_text_margin">20dp</dimen>
+    <dimen name="message_text_horizontal_margin">20dp</dimen>
     <dimen name="message_text_padding">20dp</dimen>
     <dimen name="message_text_max_width">270dp</dimen>
     <dimen name="message_pointy_radius">0dp</dimen>
     <dimen name="message_frame_radius">30dp</dimen>
     <dimen name="toolbar_height">80dp</dimen>
+    <dimen name="chat_cl_horizontal_margin">30dp</dimen>
+    <dimen name="nickname_top_margin">10dp</dimen>
+    <dimen name="nickname_text_size">23sp</dimen>
+    <dimen name="profession_top_margin">10dp</dimen>
+    <dimen name="chat_avatar_top_margin">35dp</dimen>
+    <dimen name="chat_toolbar_height">110dp</dimen>
+    <dimen name="chat_toolbar_top_margin">5dp</dimen>
+    <dimen name="conversation_rv_bottom_margin">130dp</dimen>
+    <dimen name="message_text_vertical_margin">5dp</dimen>
 
 </resources>

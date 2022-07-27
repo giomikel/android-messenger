@@ -5,18 +5,23 @@
 
     <data>
 
+        <import type="android.view.View" />
+
+        <variable
+            name="model"
+            type="ge.gmikeladze.messenger.view_model.ChatViewModel" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fitsSystemWindows="true"
         tools:context=".view.ChatActivity">
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appBar"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/app_bar_height">
+            android:layout_height="@dimen/app_bar_height"
+            android:fitsSystemWindows="true">
 
             <com.google.android.material.appbar.CollapsingToolbarLayout
                 android:id="@+id/collapsingToolbar"
@@ -24,18 +29,20 @@
                 android:layout_height="match_parent"
                 android:background="@color/collapsed_bar_color"
                 app:contentScrim="@color/collapsed_bar_color"
-                app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
+                app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
                 <androidx.appcompat.widget.Toolbar
                     android:id="@+id/toolbar"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/chat_toolbar_height"
                     android:layout_gravity="bottom"
+                    android:layout_marginTop="@dimen/chat_toolbar_top_margin"
                     app:layout_collapseMode="pin">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="@dimen/chat_cl_horizontal_margin">
 
                         <ImageButton
                             android:id="@+id/backButton"
@@ -51,8 +58,11 @@
                             android:id="@+id/nicknameText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/nickname_top_margin"
+                            android:text="@{model.nickname}"
                             android:textColor="@color/white"
-                            android:textSize="23sp"
+                            android:textSize="@dimen/nickname_text_size"
+                            android:textStyle="bold"
                             app:layout_constraintStart_toStartOf="@id/backButton"
                             app:layout_constraintTop_toBottomOf="@id/backButton"
                             tools:text="@string/test_name" />
@@ -61,19 +71,22 @@
                             android:id="@+id/professionText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
+                            android:layout_marginTop="@dimen/profession_top_margin"
+                            android:text="@{model.profession}"
                             android:textColor="@color/chat_profession_text_color"
                             app:layout_constraintStart_toStartOf="@id/nicknameText"
                             app:layout_constraintTop_toBottomOf="@id/nicknameText"
                             tools:text="@string/profession_text" />
 
                         <ImageView
+                            android:id="@+id/avatarImage"
                             android:layout_width="@dimen/small_avatar_icon_dimen"
                             android:layout_height="@dimen/small_avatar_icon_dimen"
+                            android:layout_marginTop="@dimen/chat_avatar_top_margin"
                             android:contentDescription="@null"
                             android:src="@drawable/avatar_image_placeholder"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="@id/nicknameText" />
+                            app:layout_constraintTop_toTopOf="parent" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </androidx.appcompat.widget.Toolbar>
             </com.google.android.material.appbar.CollapsingToolbarLayout>
@@ -83,13 +96,16 @@
             android:id="@+id/conversationRV"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:clipToPadding="true"
+            android:paddingBottom="@dimen/conversation_rv_bottom_margin"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom">
+            android:layout_gravity="bottom"
+            android:fitsSystemWindows="true">
 
             <EditText
                 android:id="@+id/messageBox"
@@ -107,5 +123,13 @@
                 android:paddingHorizontal="@dimen/message_box_horizontal_padding" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="@{model.isProgressBarVisible ? View.VISIBLE : View.INVISIBLE}" />
+
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>
