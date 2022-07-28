@@ -1,5 +1,6 @@
 package ge.gmikeladze.messenger.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -34,6 +35,7 @@ class SearchItemAdapter : RecyclerView.Adapter<SearchItemAdapter.SearchItemViewH
         return searchItems.size
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun updateSearchItems(searchItems: List<User>) {
         this.searchItems = searchItems
         notifyDataSetChanged()

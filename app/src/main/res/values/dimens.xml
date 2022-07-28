@@ -33,12 +33,12 @@
 
     <dimen name="contact_item_height">120dp</dimen>
     <dimen name="small_avatar_icon_dimen">65dp</dimen>
-    <dimen name="contact_item_smaller_text">13sp</dimen>
-    <dimen name="contact_item_bigger_text">16sp</dimen>
-    <dimen name="contact_item_avatar_left_margin">16dp</dimen>
+    <dimen name="contact_item_smaller_text">15sp</dimen>
+    <dimen name="contact_item_bigger_text">18sp</dimen>
+    <dimen name="contact_item_avatar_left_margin">20dp</dimen>
     <dimen name="contact_item_name_left_margin">16dp</dimen>
     <dimen name="contact_item_name_top_margin">16dp</dimen>
-    <dimen name="contact_item_time_right_margin">8dp</dimen>
+    <dimen name="contact_item_time_right_margin">20dp</dimen>
     <dimen name="contact_item_last_message_top_margin">24dp</dimen>
     <dimen name="contact_item_avatar_top_margin">8dp</dimen>
     <dimen name="contact_item_time_top_margin">16dp</dimen>

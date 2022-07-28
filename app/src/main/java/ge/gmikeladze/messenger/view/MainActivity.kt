@@ -32,7 +32,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
-        const val PREFERENCE_NAME = "messengerAppPreferences"
         const val MAIL = "@test.com"
         const val DATABASE_USERS = "users"
         const val DATABASE_CHATS = "chats"

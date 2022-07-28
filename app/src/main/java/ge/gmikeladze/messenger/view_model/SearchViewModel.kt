@@ -10,7 +10,6 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
-import ge.gmikeladze.messenger.model.Chat
 import ge.gmikeladze.messenger.model.User
 import ge.gmikeladze.messenger.view.MainActivity
 import ge.gmikeladze.messenger.view.MainActivity.Companion.DATABASE_USERS
@@ -35,11 +34,13 @@ class SearchViewModel : ViewModel() {
             database.getReference(DATABASE_USERS).orderByChild("nickname").startAt(text)
                 .addValueEventListener(object : ValueEventListener {
                     override fun onDataChange(snapshot: DataSnapshot) {
-                        val users = snapshot.getValue<Map<String, User>>()!!.values.toList()
+                        val users = snapshot.getValue<Map<String, User>>()?.values?.toList()
                         val result: MutableList<User> = mutableListOf()
-                        for (user in users) {
-                            if (user.nickname!!.startsWith(text)) {
-                                result.add(user)
+                        if (users != null) {
+                            for (user in users) {
+                                if (user.nickname!!.startsWith(text)) {
+                                    result.add(user)
+                                }
                             }
                         }
                         searchItems.postValue(result)
@@ -60,7 +61,7 @@ class SearchViewModel : ViewModel() {
         val currentUser = Firebase.auth.currentUser!!.email!!.substringBefore(MainActivity.MAIL)
         val database = Firebase.database
         database.getReference(MainActivity.DATABASE_CONVERSATIONS).push().get()
-            .addOnSuccessListener { conversationSnapshot ->
+            .addOnSuccessListener {
                 database.getReference(DATABASE_USERS).orderByChild("nickname")
                     .equalTo(user.nickname)
                     .addListenerForSingleValueEvent(object : ValueEventListener {
@@ -69,30 +70,30 @@ class SearchViewModel : ViewModel() {
                             snapshot.children.forEach {
                                 secondUser = it.key.toString()
                             }
+                            var key = currentUser + secondUser
+                            if (secondUser < currentUser) {
+                                key = secondUser + currentUser
+                            }
+                            val chatMap1: Map<String, Any> =
+                                mapOf(
+                                    "id" to key,
+                                    "user1" to secondUser,
+                                    "user2" to currentUser
+                                )
                             val second =
                                 database.getReference(MainActivity.DATABASE_CHATS).child(secondUser)
-                                    .child(currentUser).setValue(
-                                        Chat(
-                                            conversationSnapshot.key,
-                                            secondUser,
-                                            currentUser
-                                        )
-                                    )
+                                    .child(currentUser).updateChildren(chatMap1)
+                            val chatMap2: Map<String, Any> =
+                                mapOf(
+                                    "id" to key,
+                                    "user1" to currentUser,
+                                    "user2" to secondUser
+                                )
                             val current = database.getReference(MainActivity.DATABASE_CHATS)
                                 .child(currentUser)
-                                .child(secondUser).setValue(
-                                    Chat(
-                                        conversationSnapshot.key,
-                                        currentUser,
-                                        secondUser
-                                    )
-                                )
+                                .child(secondUser).updateChildren(chatMap2)
                             whenAllComplete(second, current).addOnCompleteListener {
                                 if (it.isSuccessful) {
-                                    var key = currentUser + secondUser
-                                    if (secondUser < currentUser) {
-                                        key = secondUser + currentUser
-                                    }
                                     clickStatus.postValue(CHAT_SUCCESS + secondUser + SEPARATOR + key)
                                 } else {
                                     clickStatus.postValue(CHAT_FAIL + it.exception.toString())

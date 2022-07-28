@@ -1,6 +1,5 @@
 package ge.gmikeladze.messenger.model
 
-import android.graphics.Bitmap
 import com.google.firebase.database.IgnoreExtraProperties
 
 @IgnoreExtraProperties

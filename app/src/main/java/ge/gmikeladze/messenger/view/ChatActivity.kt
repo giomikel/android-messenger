@@ -7,7 +7,6 @@ import android.view.MotionEvent
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -54,12 +53,10 @@ class ChatActivity : AppCompatActivity() {
         viewModel.messages.observe(this) {
             adapter.updateMessages(it)
             if (adapter.itemCount > 0) {
-                val lm = LinearLayoutManager(this)
-                binding.conversationRV.layoutManager = lm
-                lm.scrollToPositionWithOffset(adapter.itemCount - 1, 30)
+                binding.conversationRV.smoothScrollToPosition(adapter.itemCount - 1)
             }
         }
-        fetchConversation()
+        loadConversation()
     }
 
     private fun getExtras() {
@@ -114,7 +111,7 @@ class ChatActivity : AppCompatActivity() {
         binding.conversationRV.adapter = adapter
     }
 
-    private fun fetchConversation() {
+    private fun loadConversation() {
         viewModel.setMessageListener(id)
         viewModel.status.observe(this) {
             Toast.makeText(this, it, Toast.LENGTH_SHORT).show()

@@ -64,6 +64,10 @@ class SearchActivity : AppCompatActivity() {
         binding.lifecycleOwner = this
         setupRV()
         setOnClickListeners()
+        viewModel.searchUsers("")
+        viewModel.searchItems.observe(this@SearchActivity) {
+            adapter.updateSearchItems(it)
+        }
         setTextListener()
     }
 
@@ -100,6 +104,13 @@ class SearchActivity : AppCompatActivity() {
                     }, delay)
                     viewModel.searchItems.observe(this@SearchActivity) {
                         adapter.updateSearchItems(it)
+                        if (it.isEmpty()) {
+                            Toast.makeText(
+                                this@SearchActivity,
+                                SEARCH_LIST_EMPTY_MESSAGE,
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
                     }
                     viewModel.searchStatus.observe(this@SearchActivity) {
                         Toast.makeText(this@SearchActivity, it.toString(), Toast.LENGTH_SHORT)
@@ -114,5 +125,6 @@ class SearchActivity : AppCompatActivity() {
     companion object {
         const val SECOND_USER_EXTRA = "second"
         const val CHAT_ID_EXTRA = "id"
+        const val SEARCH_LIST_EMPTY_MESSAGE = "Search list empty"
     }
 }

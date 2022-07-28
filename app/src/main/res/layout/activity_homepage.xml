@@ -5,6 +5,8 @@
 
     <data>
 
+        <import type="android.view.View" />
+
         <variable
             name="model"
             type="ge.gmikeladze.messenger.view_model.HomepageViewModel" />
@@ -13,7 +15,9 @@
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:descendantFocusability="beforeDescendants"
         android:fitsSystemWindows="true"
+        android:focusableInTouchMode="true"
         tools:context=".view.HomepageActivity">
 
         <com.google.android.material.appbar.AppBarLayout
@@ -118,5 +122,11 @@
             app:layout_anchor="@id/bottomBar"
             app:tint="@color/white" />
 
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="@{model.isProgressBarVisible ? View.VISIBLE : View.INVISIBLE}" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

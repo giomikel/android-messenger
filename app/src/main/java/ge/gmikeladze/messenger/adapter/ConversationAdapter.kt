@@ -41,6 +41,7 @@ class ConversationAdapter : RecyclerView.Adapter<ConversationAdapter.Conversatio
         return if (messages[position].sender == currentUser) 0 else 1
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun updateMessages(messages: List<Message>) {
         this.messages = messages
         notifyDataSetChanged()
