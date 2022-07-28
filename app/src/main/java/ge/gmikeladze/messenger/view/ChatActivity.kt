@@ -115,8 +115,11 @@ class ChatActivity : AppCompatActivity() {
     }
 
     private fun fetchConversation() {
-        viewModel.loadMessages(id)
+        viewModel.setMessageListener(id)
         viewModel.status.observe(this) {
+            Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
+        }
+        viewModel.listenerStatus.observe(this) {
             Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
         }
     }
